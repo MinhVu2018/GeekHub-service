@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:ext_storage/ext_storage.dart';
 
 import 'customer.dart';
 
@@ -49,20 +47,5 @@ class StorageManger {
     for (int i = 0; i < fields.length; i++)
       ans.add(Customer.fromList(fields[i]));
     return ans;
-  }
-
-  Future<void> export(List<dynamic> lstCustomer) async {
-    var appDocumentsDirectory =
-        await ExtStorage.getExternalStoragePublicDirectory(
-            ExtStorage.DIRECTORY_DOWNLOADS);
-    String filePath = '$appDocumentsDirectory/account.csv';
-
-    List<List<dynamic>> lst = [];
-    for (int i = 0; i < lstCustomer.length; i++)
-      lst.add(lstCustomer[i].toList());
-    String csv = ListToCsvConverter().convert(lst);
-
-    File file = File(filePath);
-    file.writeAsString(csv);
   }
 }

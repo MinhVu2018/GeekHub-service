@@ -34,7 +34,7 @@ dependencies:
   enum_to_string: ^2.0.1
   csv: ^5.0.0
   path_provider: ^2.0.2
-  ext_storage: ^1.0.3
+
 
 dev_dependencies:
   flutter_launcher_icons: "^0.9.1"

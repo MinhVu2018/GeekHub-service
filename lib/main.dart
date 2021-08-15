@@ -59,12 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('ACCOUNT MANAGER'),
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_to_home_screen),
-            onPressed: export,
-          ),
-        ],
       ),
       body: Column(
         children: <Widget>[
@@ -457,9 +451,5 @@ class _MyHomePageState extends State<MyHomePage> {
         temp.add(lstDefault[i]);
 
     return temp;
-  }
-
-  void export() async {
-    await storage.export(lstDefault);
   }
 }
