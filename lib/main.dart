@@ -1,11 +1,11 @@
-import 'package:acc_manager/storage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
+
 import 'customer.dart';
-import 'package:enum_to_string/enum_to_string.dart';
+import 'storage.dart';
 
 void main() {
   runApp(MyApp());
@@ -246,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SelectableText(customer.getDate()),
+                  child: SelectableText(customer.purchaseDate),
                 )
               ],
             ),
@@ -389,8 +389,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 FocusScope.of(context).requestFocus(FocusNode());
                 Customer customer = new Customer(
-                    EnumToString.fromString(Type.values, typeSelected)!,
-                    dateSelected,
+                    typeSelected,
+                    DateFormat("dd-MM-yyyy").format(dateSelected),
                     familyAccountCtrl.text);
                 add(customer);
                 Clipboard.setData(ClipboardData(text: customer.warrantyCode));
